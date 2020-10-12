@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
+import { Ionicons } from "@expo/vector-icons";
+import * as Font from "expo-font";
 
 const casheImages = (images) =>
   images.map((image) => {
@@ -13,6 +15,12 @@ const casheImages = (images) =>
     }
   });
 
+const casheFonts = (fonts) =>
+  fonts.map((font) => {
+    console.log(Font);
+    return Font.loadAsync(font);
+  });
+
 export default function App() {
   const [isReady, setIsReady] = useState(false);
   const onFinish = () => setIsReady(true);
@@ -21,16 +29,17 @@ export default function App() {
     require("./assets/icon.png"),
   ];
   const getAssets = () => {
-    const loaded = casheImages(images);
-    console.log(loaded);
+    const loadedImage = casheImages(images);
+    const loadedFont = casheFonts([Ionicons.font]);
+    return Promise.all([...loadedImage, ...loadedFont]);
   };
   return isReady ? (
     <h1>LOADEd</h1>
   ) : (
     <AppLoading
+      startAsync={getAssets}
       onError={console.error}
       onFinish={onFinish}
-      startAsync={getAssets}
     />
   );
 }
