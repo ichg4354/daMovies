@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Button } from "react-native";
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
 import { Ionicons } from "@expo/vector-icons";
 import * as Font from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Stack from "./navigation/Stack";
 
 const casheImages = (images) =>
   images.map((image) => {
@@ -17,11 +20,10 @@ const casheImages = (images) =>
 
 const casheFonts = (fonts) =>
   fonts.map((font) => {
-    console.log(Font);
     return Font.loadAsync(font);
   });
 
-export default function App() {
+export default function App(prop) {
   const [isReady, setIsReady] = useState(false);
   const onFinish = () => setIsReady(true);
   const images = [
@@ -34,13 +36,16 @@ export default function App() {
     return Promise.all([...loadedImage, ...loadedFont]);
   };
   return isReady ? (
-    <h1>LOADEd</h1>
+    <NavigationContainer>
+      <Stack />
+      {/* <Button onPress={#} /> */}
+    </NavigationContainer>
   ) : (
     <AppLoading
       startAsync={getAssets}
       onError={console.error}
       onFinish={onFinish}
-    />
+    ></AppLoading>
   );
 }
 
