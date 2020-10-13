@@ -1,17 +1,14 @@
 import React from "react";
 import { View, Text, Button } from "react-native";
 
-const Home = ({ navigation }) => {
-  console.log(navigation);
+export default ({ navigation }) => {
   return (
     <View>
-      <Text>HOME</Text>
+      <Text>MOVIES</Text>
       <Button
-        title="CLICK TO GO TO df"
+        title="To Detail"
         onPress={() => navigation.navigate("Detail")}
       ></Button>
     </View>
   );
 };
-
-export default Home;

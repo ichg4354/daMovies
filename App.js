@@ -8,6 +8,7 @@ import * as Font from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Stack from "./navigation/Stack";
+import Tabs from "./navigation/Tabs";
 
 const casheImages = (images) =>
   images.map((image) => {
@@ -38,7 +39,6 @@ export default function App(prop) {
   return isReady ? (
     <NavigationContainer>
       <Stack />
-      {/* <Button onPress={#} /> */}
     </NavigationContainer>
   ) : (
     <AppLoading
