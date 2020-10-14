@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 
 export default () => (
   <Stack.Navigator>
-    <Stack.Screen name="Detail" component={Detail} />
     <Stack.Screen name="Tabs" component={Tabs} />
+    <Stack.Screen name="Detail" component={Detail} />
   </Stack.Navigator>
 );
