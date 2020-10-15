@@ -22,7 +22,7 @@ export default ({ navigation, route }) => {
     changeHeaderName(navigation, getHeaderName(route));
   }, [route]);
   return (
-    <Tabs.Navigator>
+    <Tabs.Navigator> 
       <Tabs.Screen name="Movies" component={Movies} />
       <Tabs.Screen name="Tv" component={Tv} />
       <Tabs.Screen name="Search" component={Search} />
